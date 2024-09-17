@@ -2,7 +2,7 @@ FROM ubuntu:24.04
 
 RUN apt-get update && apt-get install -y git
 
-COPY --chmod=755 *.sh /
+COPY --chown=1000:1000 --chmod=755 *.sh /
 
 ENTRYPOINT ["/bin/bash" , "/entrypoint.sh"]
 
