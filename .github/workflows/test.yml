@@ -25,4 +25,4 @@ jobs:
           name: Hamster [bot]
           email: TheHamsterBot@outlook.com
           message: Auto Commit
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
