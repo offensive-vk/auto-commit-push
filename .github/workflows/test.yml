@@ -15,14 +15,14 @@ jobs:
         run: |
           echo "" >> Test.md
           echo "## Workflow Name: ${{ github.workflow }} " >> Test.md
-          echo "## Actor : ${{ github.actor }} " >> Test.md
+          echo "## Actor: ${{ github.actor }} " >> Test.md
           echo "## Commit SHA: ${{ github.sha }} " >> Test.md
 
       - name: Commit and Push
         uses: ./
         with: 
-            branch: ${{ 'maintain' || github.head_ref }}
-            name: Hamster [bot]
-            email: TheHamsterBot@outlook.com
-            message: Auto Commit
-            github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ 'maintain' || github.head_ref }}
+          name: Hamster [bot]
+          email: TheHamsterBot@outlook.com
+          message: Auto Commit
+          github_token: ${{ secrets.GITHUB_TOKEN }}

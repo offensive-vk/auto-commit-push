@@ -1,31 +1,31 @@
 name: 'Auto Commit and Push'
 description: 'Auto Commit and Push Action helps to stage all changes and push them to Remote Repo. '
-
 branding:
   icon: upload-cloud
   color: gray-dark
+
 inputs:
-  NAME:
+  name:
     description: 'Your Name'
     required: true
     default: ${{ github.actor }}
-  EMAIL:
+  email:
     description: 'Your Email'
     required: true
     default: ${{ github.actor }}@users.noreply.github.com
-  MESSAGE:
+  message:
     description: 'Commit message'
     required: false
     default: 'Auto Commit by Actions'
-  BRANCH:
+  branch:
     description: 'Target branch'
     required: true
     default: ${{ github.head_ref }}
-  GITHUB_TOKEN:
+  github-token:
     description: 'GitHub token to push changes'
     required: true
     default: ${{ github.token }}
-  CO_AUTHORS:
+  co_authors:
     description: 'Co-authors (comma-separated)'
     required: false
   push_options:
@@ -46,5 +46,5 @@ runs:
     - run: ./entrypoint.sh
       shell: bash
       env:
-        GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ inputs.github-token }}
         GITHUB_EVENT_REF: ${{ github.event.ref }}
