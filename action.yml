@@ -6,33 +6,45 @@ branding:
   color: gray-dark
 inputs:
   NAME:
-    description: 'Your name'
+    description: 'Your Name'
     required: true
+    default: ${{ github.actor }}
   EMAIL:
-    description: 'Your email'
+    description: 'Your Email'
     required: true
+    default: ${{ github.actor }}@users.noreply.github.com
   MESSAGE:
     description: 'Commit message'
-    required: true
+    required: false
+    default: 'Auto Commit by Actions'
   BRANCH:
     description: 'Target branch'
     required: true
-  GITHUB_REPOSITORY:
-    description: 'GitHub repository'
-    required: true
+    default: ${{ github.head_ref }}
   GITHUB_TOKEN:
     description: 'GitHub token to push changes'
     required: true
+    default: ${{ github.token }}
   CO_AUTHORS:
     description: 'Co-authors (comma-separated)'
     required: false
+  push_options:
+    description: Push options (eg. --force)
+    required: false
+    default: ''
+  commit_options:
+    description: Commit options (eg. --no-verify)
+    required: false
+    default: ''
+  add_options:
+    description: Add options (eg. -u)
+    required: false
+    default: ''
 runs:
   using: "composite"
   steps:
     - run: ${{ github.action_path }}/entrypoint.sh
       shell: bash
       env:
-        INPUT_TARGET_URL: ${{ inputs.target-url }}
-        INPUT_TARGET_USERNAME: ${{ inputs.target-username }}
-        INPUT_TARGET_TOKEN: ${{ inputs.target-token }}
+        GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
         GITHUB_EVENT_REF: ${{ github.event.ref }}
