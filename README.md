@@ -1,6 +1,12 @@
 # auto-commit-push
 
-Automated Commit &amp; Push Action.
+Automatically Commit and Push Changes to Your Repository
+
+Simplify your workflow by automating the commit and push process. This action is designed to:
+
+- Detect changes: Automatically identifies modified files in your working directory.
+- Create commits: Generates commits with customizable messages.
+- Push to remote: Pushes your commits to a specified remote branch.
 
 For example:
 
@@ -11,7 +17,6 @@ on:
   workflow_dispatch:
 
 permissions:
-  pull-requests: write
   contents: write
 
 jobs:
@@ -19,16 +24,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: commit-push
-        uses: actions/auto-commit-push@v1
+      - name: Commit and Push
+        uses: actions/auto-commit-push@v5
         with:
           name: Your Name
           email: your@email.com
           message: Commit Message
           branch: main
-          target-url: https://github.com/user/repo.git
-          target-username: user
-          target-token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           co-authors: co-author1, co-author2
 ```
 
@@ -42,41 +45,18 @@ jobs:
 | email | Your email | true | |
 | message | Commit message | true | |
 | branch | Target branch | true | |
-| target-url | Target repository URL | true | |
-| target-username | Target repository username | true | |
-| target-token | Target repository token | true | |
+| github_token | Github repository token | true | |
 | co-authors | Co-authors (comma-separated) | false | |
 
 ### Outputs
 
 None
 
-## Example
+***
 
-```yaml
-name: Auto Commit & Push
-
-on:
-  workflow_dispatch:
-
-permissions:
-  pull-requests: write
-  contents: write
-
-jobs:
-  auto-commit-push:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: commit-push
-        uses: actions/auto-commit-push@v1
-        with:
-          name: Your Name
-          email: your@email.com
-          message: Commit Message
-          branch: main
-          target-url: https://github.com/user/repo.git
-          target-username: user
-          target-token: ${{ secrets.GITHUB_TOKEN }}
-          co-authors: co-author1, co-author2
-```
+<p align="center">
+  <i>&copy; <a href="https://github.com/offensive-vk/">Vedansh </a> 2020 - Present</i><br>
+  <i>Licensed under <a href="https://github.com/offensive-vk/auto-issue?tab=MIT-1-ov-file">MIT</a></i><br>
+  <a href="https://github.com/TheHamsterBot"><img src="https://i.ibb.co/4KtpYxb/octocat-clean-mini.png" alt="hamster"/></a><br>
+  <sup>Thanks for visiting :)</sup>
+</p>
