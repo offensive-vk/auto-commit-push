@@ -25,7 +25,7 @@ Co-authored-by: $(echo "$CO_AUTHORS" | sed 's/,/\ --co-author /g')"
 export GITHUB_TOKEN=$GITHUB_TOKEN
 
 # Push the changes to the specified branch
-git push origin "$BRANCH"
+git push
 
 # If the push is successful, print a success message
 if [ $? -eq 0 ]; then
