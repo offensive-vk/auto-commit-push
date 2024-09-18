@@ -21,7 +21,7 @@ jobs:
       - name: Commit and Push
         uses: ./
         with: 
-          branch: ${{ 'maintain' || github.head_ref }}
+          branch: ${{ github.head_ref }}
           name: "Hamster [bot]"
           email: "TheHamsterBot@outlook.com"
           message: "Auto Commit"
