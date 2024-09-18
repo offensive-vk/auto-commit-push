@@ -31,7 +31,7 @@ jobs:
           email: your@email.com
           message: Commit Message
           branch: main
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           co-authors: co-author1, co-author2
 ```
 
