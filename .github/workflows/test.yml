@@ -22,7 +22,7 @@ jobs:
         uses: ./
         with: 
           branch: ${{ github.head_ref }}
-          name: "Hamster [bot]"
-          email: "TheHamsterBot@outlook.com"
+          # name: "Hamster [bot]"
+          # email: "TheHamsterBot@outlook.com"
           message: "Auto Commit"
           github-token: ${{ secrets.GITHUB_TOKEN }}

@@ -2,7 +2,7 @@
 
 # Get the inputs from the action.yml file
 NAME=${INPUT_NAME:-${GITHUB_REPOSITORY_OWNER}}
-EMAIL=${INPUT_EMAIL:-${GITHUB_REPOSITORY_OWNER_EMAIL}}
+EMAIL=${INPUT_EMAIL:-"${GITHUB_ACTOR}@users.noreply.github.com"}
 MESSAGE=${INPUT_MESSAGE:-"Auto Commit was Pushed by Actions."}
 BRANCH=${INPUT_BRANCH:-${GITHUB_HEAD_REF}}
 REPO=${GITHUB_REPOSITORY}
