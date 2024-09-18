@@ -3,8 +3,8 @@
 # Get the inputs from the action.yml file
 NAME=${INPUT_NAME:-${GITHUB_REPOSITORY_OWNER}}
 EMAIL=${INPUT_EMAIL:-${GITHUB_REPOSITORY_OWNER_EMAIL}}
-MESSAGE=${INPUT_MESSAGE:-"This Commit was Pushed by Actions."}
-BRANCH=${INPUT_BRANCH:-"main"}
+MESSAGE=${INPUT_MESSAGE:-"Auto Commit was Pushed by Actions."}
+BRANCH=${INPUT_BRANCH:-${GITHUB_HEAD_REF}}
 REPO=${GITHUB_REPOSITORY}
 GITHUB_TOKEN=${INPUT_GITHUB_TOKEN:-${GITHUB_TOKEN}}
 CO_AUTHORS=${INPUT_CO_AUTHORS:-""}
@@ -17,7 +17,9 @@ git pull --all --verbose
 git add .
 
 # Commit the changes with co-authors
-git commit -m "$MESSAGE" --author "$NAME <$EMAIL>" --co-author $(echo "$CO_AUTHORS" | sed 's/,/\ --co-author /g')
+git commit -m "$MESSAGE" --author "$NAME <$EMAIL> 
+
+Co-authored-by: $(echo "$CO_AUTHORS" | sed 's/,/\ --co-author /g')"
 
 # Set the GitHub token as an environment variable
 export GITHUB_TOKEN=$GITHUB_TOKEN
