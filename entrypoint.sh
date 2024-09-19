@@ -31,6 +31,9 @@ else
   git config --global user.email "$EMAIL"
 fi
 
+# Add safe directory config
+git config --global --add safe.directory /github/workspace
+
 # Stage all changes
 git fetch --all
 git pull --all --verbose
@@ -38,13 +41,6 @@ git add .
 
 # Commit the changes
 git commit -m "$MESSAGE"
-
-# if [ -n "$CO_AUTHORS" ]; then
-#   echo "Co-authored-by: $(echo "$CO_AUTHORS" | sed 's/,/\ --co-author /g')"
-# fi
-
-# Set the GitHub token as an environment variable
-export GITHUB_TOKEN=$GITHUB_TOKEN
 
 # Push the changes to the specified branch
 git push
