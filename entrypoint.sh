@@ -27,8 +27,8 @@ if [ -z "$NAME" ]; then
   git config --global user.name "github-actions[bot]"
   git config --global user.email "github-actions[bot]@users.noreply.github.com"
 else
-  git config --local user.name "$NAME"
-  git config --local user.email "$EMAIL"
+  git config --global user.name "$NAME"
+  git config --global user.email "$EMAIL"
 fi
 
 # Stage all changes
