@@ -1,4 +1,4 @@
-name: 'Auto Commit and Push'
+name: 'Auto Commit Push'
 description: 'Auto Commit and Push Action helps to stage all changes and push them to Remote Repo. '
 branding:
   icon: upload-cloud
