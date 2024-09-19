@@ -45,4 +45,3 @@ runs:
   image: Dockerfile
   env:
       GITHUB_TOKEN: ${{ inputs.github-token }}
-      GITHUB_EVENT_REF: ${{ github.event.ref }}
