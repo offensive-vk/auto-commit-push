@@ -25,7 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Commit and Push
-        uses: actions/auto-commit-push@v5
+        uses: offensive-vk/auto-commit-push@v5
         with:
           name: Your Name
           email: your@email.com
@@ -45,7 +45,7 @@ jobs:
 | email | Your email | true | |
 | message | Commit message | true | |
 | branch | Target branch | true | |
-| github_token | Github repository token | true | |
+| github-token | Github repository token | true | |
 | co-authors | Co-authors (comma-separated) | false | |
 
 ### Outputs

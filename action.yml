@@ -1,4 +1,4 @@
-name: 'Auto Commit and Push'
+name: 'Auto Commit Push'
 description: 'Auto Commit and Push Action helps to stage all changes and push them to Remote Repo. '
 branding:
   icon: upload-cloud
@@ -41,10 +41,7 @@ inputs:
     required: false
     default: ''
 runs:
-  using: "composite"
-  steps:
-    - run: chmod +x ./entrypoint.sh; ./entrypoint.sh
-      shell: bash
-      env:
-        GITHUB_TOKEN: ${{ inputs.github-token }}
-        GITHUB_EVENT_REF: ${{ github.event.ref }}
+  using: 'docker'
+  image: Dockerfile
+  env:
+      GITHUB_TOKEN: ${{ inputs.github-token }}
