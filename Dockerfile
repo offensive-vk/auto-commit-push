@@ -2,9 +2,11 @@ FROM ubuntu:24.04
 
 RUN apt-get update && apt-get install -y git
 
-COPY --chown=1000:1000 --chmod=+x *.sh /
+# Copy the entrypoint.sh script to the Docker image root
+COPY --chown=1000:1000 --chmod=+x entrypoint.sh /
 
-ENTRYPOINT ["sh", "./entrypoint.sh"]
+# Set entrypoint to the script
+ENTRYPOINT ["sh", "/entrypoint.sh"]
 
 LABEL \
     "name"="Auto Commit and Push Action" \
