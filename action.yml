@@ -41,9 +41,8 @@ inputs:
     required: false
     default: ''
 runs:
-  using: "composite"
-  steps:
-    - run: chmod +x ./entrypoint.sh; ./entrypoint.sh
+  using: 'docker'
+  image: Dockerfile
       shell: bash
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}
