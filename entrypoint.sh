@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Get the inputs from the action.yml file
-NAME=${INPUT_NAME:-${GITHUB_ACTOR}}
-EMAIL=${INPUT_EMAIL:-"${GITHUB_ACTOR}@users.noreply.github.com"}
-MESSAGE=${INPUT_MESSAGE:-"Auto Commit was Pushed by Actions."}
-BRANCH=${INPUT_BRANCH:-${GITHUB_HEAD_REF}}
+NAME=${INPUT_NAME}
+EMAIL=${INPUT_EMAIL}
+MESSAGE=${INPUT_MESSAGE}
+BRANCH=${INPUT_BRANCH}
 REPO=${GITHUB_REPOSITORY}
 GITHUB_TOKEN=${INPUT_GITHUB_TOKEN:-${GITHUB_TOKEN}}
 CO_AUTHORS=${INPUT_CO_AUTHORS:-""}
@@ -13,14 +13,6 @@ CO_AUTHORS=${INPUT_CO_AUTHORS:-""}
 if [ -z "$GITHUB_TOKEN" ]; then
   echo "Error: GITHUB_TOKEN is required"
   exit 1
-fi
-
-if [ -z "$NAME" ]; then
-  echo "Error: NAME is required"
-fi
-
-if [ -z "$EMAIL" ]; then
-  echo "Error: EMAIL is required"
 fi
 
 if [ -z "$NAME" ]; then
@@ -52,3 +44,7 @@ else
   echo "Failed to push changes to $REPO"
   exit 1
 fi
+
+########################
+# MIT 2024. GitHub. Inc
+########################

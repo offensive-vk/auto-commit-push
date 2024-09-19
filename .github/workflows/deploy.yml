@@ -9,11 +9,10 @@ on:
   workflow_dispatch:
 
 env:
-  USERNAME: ${{ github.repository_owner }}
   REGISTRY: ghcr.io
+  USERNAME: ${{ github.repository_owner }}
   IMAGE_NAME: ${{ github.repository }}
-  TOKEN: ${{ secrets.GITHUB_TOKEN || secrets.BOT_TOKEN }}
-  ACTION: ${{ github.workflow_path }}
+  PASSWORD: ${{ secrets.GITHUB_TOKEN || secrets.BOT_TOKEN }}
   
 jobs:
   deploy:
@@ -31,7 +30,7 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ env.USERNAME }}
-          password: ${{ env.TOKEN }}
+          password: ${{ env.PASSWORD }}
 
       - name: Extract Metadatafor Docker
         id: meta
@@ -42,9 +41,9 @@ jobs:
       - name: Verify Tags and Labels
         run: |
           echo "## Github Action Summary - Docker CI " >> $GITHUB_STEP_SUMMARY
-          echo "Tags: ${{ steps.meta.outputs.tags }}" >> $GITHUB_STEP_SUMMARY
-          echo "Labels: ${{ steps.meta.outputs.labels }}" >> $GITHUB_STEP_SUMMARY
-          echo "*** VERIFICATION COMPLETED ***"
+          echo "Tags: ${{ steps.meta.outputs.tags }} " >> $GITHUB_STEP_SUMMARY
+          echo "Labels: ${{ steps.meta.outputs.labels }} " >> $GITHUB_STEP_SUMMARY
+          echo "*** VERIFICATION COMPLETED ***" >> $STEP_STEP_SUMMARY
 
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v4

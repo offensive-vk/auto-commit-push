@@ -4,7 +4,6 @@ Automatically Commit and Push Changes to Your Repository
 
 Simplify your workflow by automating the commit and push process. This action is designed to:
 
-- Detect changes: Automatically identifies modified files in your working directory.
 - Create commits: Generates commits with customizable messages.
 - Push to remote: Pushes your commits to a specified remote branch.
 

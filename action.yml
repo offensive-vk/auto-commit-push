@@ -7,16 +7,16 @@ branding:
 inputs:
   name:
     description: 'Your Name'
-    required: true
-    default: ${{ github.actor }}
+    required: false
+    default: 'github-actions[bot]'
   email:
     description: 'Your Email'
-    required: true
-    default: ${{ github.actor }}@users.noreply.github.com
+    required: false
+    default: 'github-actions[bot]@users.noreply.github.com'
   message:
     description: 'Commit message'
     required: false
-    default: 'Auto Commit by Actions'
+    default: ''
   branch:
     description: 'Target branch'
     required: true
@@ -40,6 +40,7 @@ inputs:
     description: Add options (eg. -u)
     required: false
     default: ''
+
 runs:
   using: 'docker'
   image: Dockerfile
