@@ -26,9 +26,9 @@ jobs:
       - name: Commit and Push
         uses: offensive-vk/auto-commit-push@v5
         with:
-          name: Your Name
-          email: your@email.com
-          message: Commit Message
+          name: 'Your Name'
+          email: 'your@email.com'
+          message: 'Commit Message'
           branch: main
           github-token: ${{ secrets.GITHUB_TOKEN }}
           co-authors: co-author1, co-author2
