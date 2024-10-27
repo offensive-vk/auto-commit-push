@@ -5,17 +5,18 @@ on:
     tags:
       - '*'
   schedule:
-      - cron: '0 0 1 * *'
+      - cron: '0 0 * * 0'
   workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
   USERNAME: ${{ github.repository_owner }}
   IMAGE_NAME: ${{ github.repository }}
-  PASSWORD: ${{ secrets.GITHUB_TOKEN || secrets.BOT_TOKEN }}
+  PASSWORD: ${{ secrets.GITHUB_TOKEN }}
   
 jobs:
   deploy:
+    name: Deploy
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -34,9 +35,16 @@ jobs:
 
       - name: Extract Metadatafor Docker
         id: meta
-        uses: docker/metadata-action@v4
+        uses: docker/metadata-action@v6
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: 
+            latest
+            ${{ github.ref_name }}
+          labels: |
+            org.opencontainers.image.title=auto-commit-push
+            org.opencontainers.image.description=Automatically Commit and Push Changes to Your Repository
+            org.opencontainers.image.vendor=Vedansh
 
       - name: Verify Tags and Labels
         run: |
@@ -46,9 +54,10 @@ jobs:
           echo "*** VERIFICATION COMPLETED ***"
 
       - name: Build and Push Docker Image
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v6
         with:
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          platform: linux/amd64,linx/arm64,linux/arm/v7
