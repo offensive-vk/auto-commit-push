@@ -25,6 +25,7 @@ inputs:
   github-token:
     description: 'GitHub token to push changes'
     required: true
+    default: ${{ github.token }}
   co_authors:
     description: 'Co-authors (comma-separated)'
     required: false

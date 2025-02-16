@@ -32,5 +32,5 @@ jobs:
         uses: ./
         with: 
           branch: ${{ github.ref_name }}
-          message: "Update Automated Stats (Push)"
+          message: "Updated Automated Stats (Push)"
           github-token: ${{ secrets.GITHUB_TOKEN }}
