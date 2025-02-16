@@ -1,6 +1,6 @@
 name: 'Auto Commit Push'
 author: 'Vedansh (offensive-vk)'
-description: 'Auto Commit and Push Action helps to stage all changes and push them to Remote Repo. '
+description: 'Auto Commit and Push Action helps to stage all changes and push them to Remote Repository. '
 branding:
   icon: upload-cloud
   color: gray-dark
@@ -25,7 +25,6 @@ inputs:
   github-token:
     description: 'GitHub token to push changes'
     required: true
-    default: '${{ github.token }}'
   co_authors:
     description: 'Co-authors (comma-separated)'
     required: false
